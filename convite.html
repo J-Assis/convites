@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite Especial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle, #fff 0%, #f8e1e7 100%);
+  font-family: 'Playfair Display', serif;
+}
+
+/* Partículas simples */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#ffffff88 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: moveBg 20s linear infinite;
+}
+
+@keyframes moveBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(100px); }
+}
+
+/* BALÃO */
+#balloon {
+  position: absolute;
+  width: 50px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, #ff9eb5, #e75480);
+  border-radius: 50% 50% 45% 45%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  box-shadow: inset -5px -10px 15px rgba(0,0,0,0.2),
+              0 10px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: all 3s ease;
+}
+
+#balloon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+
+/* TEXTO */
+#text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
+  color: #b76e79;
+  opacity: 0;
+  transition: all 3s ease;
+}
+
+/* BOTÕES */
+.buttons {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#yes {
+  background: gold;
+}
+
+#no {
+  background: #ccc;
+  position: absolute;
+}
+
+/* Confete */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: red;
+  top: -10px;
+  animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div id="balloon">
+  <img id="photo" src="">
+</div>
+
+<div id="text">Quer ser meu madrinho?</div>
+
+<div class="buttons">
+  <button id="yes">Sim</button>
+  <button id="no">Não</button>
+</div>
+
+<script>
+// =====================
+// CONFIGURAÇÃO DA FOTO
+// =====================
+const FOTO = "https://via.placeholder.com/400"; // TROQUE AQUI
+
+document.getElementById("photo").src = FOTO;
+
+// =====================
+// ANIMAÇÃO BALÃO
+// =====================
+setTimeout(() => {
+  let balloon = document.getElementById("balloon");
+  balloon.style.transform = "translate(-50%, -50%) scale(4)";
+  document.getElementById("photo").style.opacity = 1;
+}, 500);
+
+// =====================
+// TEXTO ESPIRAL
+// =====================
+setTimeout(() => {
+  let text = document.getElementById("text");
+  text.style.opacity = 1;
+  text.style.transform = "translate(-50%, -200%) scale(2) rotate(720deg)";
+}, 3500);
+
+// =====================
+// BOTÕES
+// =====================
+setTimeout(() => {
+  document.querySelector(".buttons").style.opacity = 1;
+}, 5000);
+
+// =====================
+// BOTÃO NÃO FUGINDO
+// =====================
+const noBtn = document.getElementById("no");
+
+function fugir() {
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 100);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", fugir);
+noBtn.addEventListener("touchstart", fugir);
+
+// =====================
+// BOTÃO SIM + CONFETE
+// =====================
+document.getElementById("yes").onclick = () => {
+  alert("Você aceitou! Agora não tem volta 💍");
+
+  for (let i = 0; i < 100; i++) {
+    let conf = document.createElement("div");
+    conf.className = "confetti";
+    conf.style.left = Math.random() * window.innerWidth + "px";
+    conf.style.background = ["gold", "pink", "white"][Math.floor(Math.random()*3)];
+    conf.style.animationDuration = (Math.random() * 2 + 1) + "s";
+    document.body.appendChild(conf);
+
+    setTimeout(() => conf.remove(), 2000);
+  }
+};
+</script>
+
+</body>
+</html>
