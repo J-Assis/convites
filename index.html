@@ -1,98 +1,406 @@
+Crie um site completo em um único arquivo HTML funcional (index.html), pronto para ser publicado no GitHub Pages, sem dependências externas além de Google Fonts.
+
+O site deve conter:
+
+1. ANIMAÇÃO DE ENTRADA:
+
+* Um balão central inicialmente pequeno (escala baixa) que cresce suavemente até um tamanho grande (escala ~3).
+* O balão deve ter aparência realista com gradiente, sombra interna e externa.
+* Dentro do balão, uma imagem deve aparecer gradualmente (fade-in).
+* A imagem deve ser configurável por uma variável no topo do script.
+
+2. TEXTO ANIMADO:
+
+* Após o balão terminar de crescer, exibir o texto:
+  "Quer ser meu madrinho?"
+* O texto deve iniciar pequeno no centro da tela, com rotação (transform: rotate), e crescer até o topo da tela.
+* Deve ter uma animação suave combinando escala e rotação (efeito espiral).
+
+3. BOTÕES:
+
+* Dois botões: "Sim" e "Não".
+* O botão "Sim":
+
+  * Ao clicar, dispara múltiplos elementos animados (confetes, corações ou estrelas) caindo pela tela.
+  * Exibe uma mensagem de sucesso (alert ou elemento na tela).
+* O botão "Não":
+
+  * Em desktop: deve fugir do cursor usando evento mouseover, mudando para posições aleatórias dentro da viewport.
+  * Em mobile: ao tocar, deve mudar de posição imediatamente (touchstart).
+
+4. ESTILO VISUAL:
+
+* Paleta: rose gold, dourado, branco e rosa claro.
+* Fundo com efeito suave (gradiente + partículas simuladas via CSS).
+* Tipografia elegante (usar Google Fonts: serif + handwritten).
+* Layout centralizado e responsivo.
+
+5. REQUISITOS TÉCNICOS:
+
+* Tudo deve estar em UM ÚNICO ARQUIVO HTML (HTML + CSS + JS embutidos).
+* O JavaScript deve estar dentro de window.onload para garantir execução correta no GitHub Pages.
+* Não usar bibliotecas externas (sem jQuery, sem frameworks).
+* Garantir compatibilidade com navegadores modernos.
+* Nenhum erro de console.
+* Código simples, organizado e funcional.
+
+6. IMPORTANTE:
+
+* Garantir que todas animações realmente funcionem ao abrir o arquivo diretamente ou via GitHub Pages.
+* Evitar caminhos relativos quebrados.
+* Não usar nada que dependa de servidor backend.
+
+Retorne apenas o código completo do arquivo index.html, sem explicações.
+Lite
+Com certeza! Vou criar o arquivo index.html completo com todas as animações, estilos e funcionalidades solicitadas, pronto para o GitHub Pages.
+Lite
+Aqui está o código completo do arquivo index.html com todas as animações e funcionalidades solicitadas. O arquivo está pronto para ser publicado no GitHub Pages.
+index.html
+Code · 11.06 KB
+View all files in this task
+
+I've created the full index.html file with balloon animation, animated text, interactive buttons, and a rose gold/dourado style, ready for GitHub Pages deployment.
+Task completed
+How was this result?
+Suggested follow-ups
+
+
+index.html
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #b76e79;
+            --gold: #d4af37;
+            --light-pink: #fff0f5;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%);
+        }
 
-<style>
-body {
-  margin:0;
-  overflow:hidden;
-  background:#ffe4ec;
-  text-align:center;
-  font-family:Arial;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-#balloon {
-  width:100px;
-  height:120px;
-  background:red;
-  border-radius:50%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) scale(0);
-  transition:3s;
-  overflow:hidden;
-}
+        body {
+            font-family: 'Cinzel', serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-#balloon img {
-  width:100%;
-  height:100%;
-  opacity:0;
-  transition:2s;
-}
+        /* Partículas de fundo simuladas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-#text {
-  position:absolute;
-  top:10%;
-  width:100%;
-  font-size:40px;
-  opacity:0;
-  transition:2s;
-}
+        .particle {
+            position: absolute;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
 
-button {
-  padding:10px 20px;
-  font-size:18px;
-  margin:10px;
-}
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); }
+            100% { transform: translateY(-10vh) translateX(50px); }
+        }
 
-#no {
-  position:absolute;
-}
-</style>
+        /* Container Principal */
+        .container {
+            text-align: center;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        /* Balão */
+        .balloon-container {
+            position: relative;
+            width: 100px;
+            height: 120px;
+            margin-bottom: 50px;
+            transform: scale(0.1);
+            opacity: 0;
+            transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s;
+        }
+
+        .balloon {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #ffccd5, var(--rose-gold));
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid var(--rose-gold);
+        }
+
+        .balloon-img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 2s ease-in 1s;
+        }
+
+        /* Texto Animado */
+        .invite-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--rose-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: scale(0.1) rotate(-45deg);
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1) rotate(-45deg);
+            white-space: nowrap;
+        }
+
+        .invite-text.show {
+            opacity: 1;
+            top: 20%;
+            transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        }
+
+        /* Botões */
+        .buttons-wrapper {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in 2.5s;
+            margin-top: 200px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 120px;
+        }
+
+        .btn-sim {
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            color: white;
+        }
+
+        .btn-sim:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .btn-nao {
+            background: var(--white);
+            color: var(--rose-gold);
+            border: 2px solid var(--rose-gold);
+            position: relative;
+        }
+
+        /* Confetes/Corações */
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Mensagem de Sucesso */
+        #success-msg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 200;
+            text-align: center;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--gold);
+        }
+
+        #success-msg.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #success-msg h2 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--rose-gold);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .invite-text { font-size: 2rem; }
+            .btn { padding: 12px 30px; font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
-<div id="balloon">
-  <img id="foto" src="https://via.placeholder.com/300">
-</div>
+    <div class="particles" id="particles"></div>
 
-<div id="text">Quer ser meu madrinho?</div>
+    <div class="container">
+        <div class="balloon-container" id="balloonContainer">
+            <div class="balloon">
+                <img src="" alt="Foto" class="balloon-img" id="balloonImg">
+            </div>
+        </div>
 
-<div style="position:absolute; bottom:50px; width:100%;">
-  <button onclick="sim()">Sim</button>
-  <button id="no">Não</button>
-</div>
+        <h1 class="invite-text" id="inviteText">Quer ser meu madrinho?</h1>
 
-<script>
-window.onload = function(){
+        <div class="buttons-wrapper" id="buttonsWrapper">
+            <button class="btn btn-sim" id="btnSim">Sim</button>
+            <button class="btn btn-nao" id="btnNao">Não</button>
+        </div>
+    </div>
 
-setTimeout(()=>{
-  let b = document.getElementById("balloon");
-  b.style.transform = "translate(-50%,-50%) scale(3)";
-  document.getElementById("foto").style.opacity = 1;
-},500);
+    <div id="success-msg">
+        <h2>Uhuuul!</h2>
+        <p>Ficamos muito felizes em ter você conosco!</p>
+        <button class="btn btn-sim" style="margin-top: 20px;" onclick="document.getElementById('success-msg').classList.remove('show')">Fechar</button>
+    </div>
 
-setTimeout(()=>{
-  document.getElementById("text").style.opacity = 1;
-},3500);
+    <script>
+        // CONFIGURAÇÃO: Altere a URL da imagem abaixo
+        const CONFIG = {
+            imagemBalao: "https://images.unsplash.com/photo-1518893063132-36e46dbe2428?auto=format&fit=crop&w=300&q=80"
+        };
 
-let no = document.getElementById("no");
+        window.onload = function() {
+            const balloonContainer = document.getElementById('balloonContainer');
+            const balloonImg = document.getElementById('balloonImg');
+            const inviteText = document.getElementById('inviteText');
+            const buttonsWrapper = document.getElementById('buttonsWrapper');
+            const btnSim = document.getElementById('btnSim');
+            const btnNao = document.getElementById('btnNao');
+            const particlesContainer = document.getElementById('particles');
 
-no.onmouseover = ()=>{
-  no.style.left = Math.random()*window.innerWidth + "px";
-  no.style.top = Math.random()*window.innerHeight + "px";
-}
+            // 1. Inicializar imagem
+            balloonImg.src = CONFIG.imagemBalao;
 
-window.sim = function(){
-  alert("Você não tem escolha 😌");
-}
+            // 2. Criar partículas de fundo
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.width = Math.random() * 10 + 5 + 'px';
+                p.style.height = p.style.width;
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particlesContainer.appendChild(p);
+            }
 
-}
-</script>
+            // 3. Iniciar Animação do Balão
+            setTimeout(() => {
+                balloonContainer.style.opacity = "1";
+                balloonContainer.style.transform = "scale(3)";
+                balloonImg.style.opacity = "1";
+            }, 500);
 
+            // 4. Iniciar Texto Animado após o balão
+            setTimeout(() => {
+                inviteText.classList.add('show');
+                buttonsWrapper.style.opacity = "1";
+            }, 3000);
+
+            // 5. Lógica do Botão "Não" (Fugir)
+            const moveNao = () => {
+                const x = Math.random() * (window.innerWidth - btnNao.offsetWidth - 40) + 20;
+                const y = Math.random() * (window.innerHeight - btnNao.offsetHeight - 40) + 20;
+                btnNao.style.position = 'fixed';
+                btnNao.style.left = x + 'px';
+                btnNao.style.top = y + 'px';
+            };
+
+            btnNao.addEventListener('mouseover', moveNao);
+            btnNao.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                moveNao();
+            });
+
+            // 6. Lógica do Botão "Sim" (Confetes)
+            btnSim.addEventListener('click', () => {
+                createConfetti();
+                document.getElementById('success-msg').classList.add('show');
+            });
+
+            function createConfetti() {
+                const colors = ['#b76e79', '#d4af37', '#ffccd5', '#ffffff'];
+                for (let i = 0; i < 100; i++) {
+                    const c = document.createElement('div');
+                    c.className = 'confetti';
+                    c.style.left = Math.random() * 100 + 'vw';
+                    c.style.top = '-20px';
+                    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    c.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    const animation = c.animate([
+                        { transform: `translate3d(0,0,0) rotate(0deg)`, opacity: 1 },
+                        { transform: `translate3d(${(Math.random() - 0.5) * 200}px, 100vh, 0) rotate(${Math.random() * 1000}deg)`, opacity: 0 }
+                    ], {
+                        duration: Math.random() * 3000 + 2000,
+                        easing: 'cubic-bezier(0, .9, .57, 1)',
+                        delay: Math.random() * 200
+                    });
+
+                    document.body.appendChild(c);
+                    animation.onfinish = () => c.remove();
+                }
+            }
+        };
+    </script>
 </body>
 </html>
+
