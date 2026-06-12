@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o amor da minha vida!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Emanuel e Julya - Nosso Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS GERAIS (CSS) --- */
+        /* --- ESTILOS GERAIS --- */
         * {
             margin: 0;
             padding: 0;
@@ -14,152 +14,197 @@
         }
 
         body {
-            background-color: #1a0813;
-            color: #ffe6f2;
+            background-color: #0b0208;
+            color: #fff0f5;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 50%, #2e0f22 0%, #1a0813 100%);
+            background-image: 
+                radial-gradient(circle at 20% 30%, #3a0d28 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #1f051c 0%, #0b0208 50%);
+            background-attachment: fixed;
         }
 
+        /* --- TOPO --- */
         header {
             text-align: center;
-            padding: 80px 20px 40px 20px;
+            padding: 100px 20px 40px 20px;
+            position: relative;
         }
 
         .heart-icon {
-            font-size: 50px;
+            font-size: 60px;
             color: #ff4d94;
-            animation: pulse 1.5s infinite;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(255, 77, 148, 0.6);
+            animation: pulse 1.4s infinite ease-in-out;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
+            50% { transform: scale(1.18); filter: drop-shadow(0 0 15px #ff4d94); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-top: 15px;
             color: #ffffff;
+            background: linear-gradient(45deg, #ffffff, #ffb3d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .sub-date {
-            font-size: 1rem;
-            color: #ff99cc;
+            font-size: 0.95rem;
+            color: #ffb3d9;
             opacity: 0.9;
-            margin-top: 10px;
-            letter-spacing: 1px;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         /* --- CONTADOR --- */
         .counter-container {
-            max-width: 600px;
-            margin: 40px auto;
+            max-width: 650px;
+            margin: 30px auto;
             text-align: center;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         .main-units {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-bottom: 30px;
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .unit {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 105, 180, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            min-width: 120px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 25px;
+            flex: 1;
+            max-width: 160px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .unit:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 105, 180, 0.3);
         }
 
         .unit-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: bold;
-            color: #ff66a3;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         .unit-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #ffb3d9;
+            color: #ff99cc;
+            font-weight: 500;
         }
 
         .time-ticker {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 300;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: inline-block;
-            padding: 10px 30px;
-            border-radius: 30px;
-            margin-bottom: 20px;
+            padding: 12px 35px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
         }
 
         .total-days {
-            font-size: 1.2rem;
-            color: #ff99cc;
+            font-size: 1.1rem;
+            color: #ffb3d9;
+            font-weight: 400;
+        }
+        
+        .total-days strong {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin: 0 4px;
         }
 
         /* --- TEXTO ROMÂNTICO --- */
         .love-letter {
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            max-width: 650px;
+            margin: 80px auto;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
             text-align: center;
-            border-left: 3px solid #ff4d94;
-            border-right: 3px solid #ff4d94;
+            border: 1px solid rgba(255, 105, 180, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
         .love-letter p {
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.9;
             font-style: italic;
+            color: #ffe6f2;
         }
 
         /* --- CARROSSEL DE FOTOS --- */
         .section-title {
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin: 80px 0 10px 0;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            margin: 100px 0 5px 0;
             color: #ffffff;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 0.9rem;
-            color: #ffb3d9;
-            margin-bottom: 30px;
-            opacity: 0.7;
+            color: #ff99cc;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            letter-spacing: 1px;
         }
 
         .carousel-container {
-            max-width: 500px;
+            max-width: 450px;
+            aspect-ratio: 4 / 5;
             margin: 0 auto;
             position: relative;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .carousel-slide {
             min-width: 100%;
-            height: 450px;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -167,27 +212,35 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            border: none;
+            background: rgba(11, 2, 8, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 24px;
-            padding: 15px 12px;
+            font-size: 18px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             z-index: 10;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 50%;
+            transition: all 0.3s;
         }
 
         .carousel-btn:hover {
-            background: rgba(255, 77, 148, 0.8);
+            background: #ff4d94;
+            border-color: #ff4d94;
+            box-shadow: 0 0 15px #ff4d94;
         }
 
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
+        .carousel-btn.prev { left: 15px; }
+        .carousel-btn.next { right: 15px; }
 
         /* --- LINHA DO TEMPO (TIMELINE) --- */
         .timeline {
-            max-width: 800px;
+            max-width: 750px;
             margin: 60px auto;
             position: relative;
             padding: 20px;
@@ -200,12 +253,12 @@
             bottom: 0;
             left: 50%;
             width: 2px;
-            background: rgba(255, 105, 180, 0.3);
+            background: linear-gradient(to bottom, #ff4d94, rgba(255, 105, 180, 0.1));
             transform: translateX(-50%);
         }
 
         .timeline-item {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             position: relative;
             width: 50%;
         }
@@ -216,63 +269,87 @@
         .timeline-item::after {
             content: '♥';
             position: absolute;
-            top: 15px;
-            right: -10px;
-            background: #1a0813;
+            top: 18px;
+            right: -11px;
+            background: #0b0208;
             color: #ff4d94;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             text-align: center;
-            line-height: 20px;
-            z-index: 1;
+            line-height: 22px;
+            font-size: 0.8rem;
+            z-index: 2;
+            border: 1px solid rgba(255, 105, 180, 0.4);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
         }
-        .timeline-item.right::after { left: -10px; }
+        .timeline-item.right::after { left: -11px; }
 
         .timeline-content {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 105, 180, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: rgba(255, 77, 148, 0.3);
         }
 
         .timeline-date {
-            font-size: 0.85rem;
-            color: #ff66a3;
-            font-weight: bold;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            color: #ff4d94;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
         }
 
         .timeline-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: #ffffff;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddccdd;
         }
 
         .timeline-img {
             width: 100%;
-            max-height: 250px;
+            aspect-ratio: 16 / 10;
             object-fit: cover;
-            border-radius: 8px;
-            margin-top: 10px;
+            border-radius: 14px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 60px 20px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+            padding: 80px 20px;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
         }
 
-        /* Responsividade para Celulares */
+        /* --- RESPONSIVIDADE EXTREMA --- */
         @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
             .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; left: 0 !important; padding-left: 40px !important; text-align: left !important; }
-            .timeline-item::after { left: 10px !important; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 35px !important; padding-right: 0 !important; text-align: left !important; margin-bottom: 40px; }
+            .timeline-item::after { left: 9px !important; top: 18px; }
             .main-units { gap: 15px; }
-            .unit { min-width: 90px; padding: 12px; }
-            .unit-number { font-size: 2.8rem; }
-            h1 { font-size: 2.2rem; }
+            .unit { padding: 15px; border-radius: 18px; }
+            .unit-number { font-size: 2.5rem; }
+            .time-ticker { font-size: 1.5rem; padding: 8px 25px; }
+            .carousel-container { max-width: 88%; }
         }
     </style>
 </head>
@@ -280,7 +357,7 @@
 
     <header>
         <div class="heart-icon">♥</div>
-        <h1>Para o amor da minha vida!</h1>
+        <h1>Emanuel & Julya</h1>
         <div class="sub-date">Juntos desde 9 de abril de 2024 • Noivos desde 7 de abril de 2026</div>
     </header>
 
@@ -297,7 +374,7 @@
                 </div>
             </div>
 
-            <div class="time-ticker" id="clock-slot">00:00:00</div>
+            <div class="time-ticker" id="clock-slot">00 : 00 : 00</div>
 
             <div class="total-days">
                 <span>✨ São <strong id="total-days-slot">0</strong> dias de muito amor ✨</span>
@@ -315,7 +392,7 @@
 
         <section>
             <h2 class="section-title">Nossos Momentos</h2>
-            <p class="section-subtitle">Memórias que guardamos no coração</p>
+            <p class="section-subtitle">Memórias que guardamos para sempre</p>
             
             <div class="carousel-container">
                 <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -331,14 +408,14 @@
 
         <section>
             <h2 class="section-title">Nossa História</h2>
-            <p class="section-subtitle">Momentos marcantes da nossa jornada</p>
+            <p class="section-subtitle">Os passos mais importantes que já demos</p>
 
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <div class="timeline-date">9 DE ABRIL DE 2024</div>
                         <h3>O Começo de Tudo</h3>
-                        <p>O dia em que nossa história de amor começou oficialmente e nossas vidas se uniram.</p>
+                        <p>O dia em que nossa história de amor começou oficialmente e nossas vidas se cruzaram para nunca mais se separar.</p>
                         <img src="foto_inicio.jpg" alt="Início do Namoro" class="timeline-img">
                     </div>
                 </div>
@@ -347,7 +424,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">7 DE ABRIL DE 2026</div>
                         <h3>O "Sim" Mais Importante</h3>
-                        <p>O dia em que decidimos dar o passo mais lindo em direção ao nosso futuro. Agora, noivos!</p>
+                        <p>O dia em que decidimos dar o passo mais lindo em direção ao nosso futuro. O início oficial do nosso noivado!</p>
                         <img src="foto_pedido.jpg" alt="Pedido de Casamento" class="timeline-img">
                     </div>
                 </div>
@@ -360,19 +437,18 @@
     </footer>
 
     <script>
-        // --- CÓDIGO DO CONTADOR AUTOMÁTICO ---
-        // Data de início ajustada: 9 de Abril de 2024 (Mês 3 no JS porque começa em 0)
+        // Configuração da data inicial: 9 de Abril de 2024 (Mês 3 no JS)
         const startDate = new Date(2024, 3, 9, 0, 0, 0); 
 
         function updateCounters() {
             const now = new Date();
             const diffTime = now - startDate;
 
-            // Cálculo total de dias brutos
+            // Dias Brutos Totais
             const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
             document.getElementById('total-days-slot').innerText = totalDays;
 
-            // Lógica precisa para meses e dias restantes
+            // Divisão exata de Meses e Dias restantes
             let months = (now.getFullYear() - startDate.getFullYear()) * 12;
             months += now.getMonth() - startDate.getMonth();
             
@@ -387,7 +463,7 @@
             document.getElementById('months-slot').innerText = months;
             document.getElementById('days-slot').innerText = days;
 
-            // Relógio em tempo real (HH : MM : SS)
+            // Relógio digital dinâmico (HH : MM : SS)
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
@@ -395,11 +471,10 @@
             document.getElementById('clock-slot').innerText = `${hours} : ${minutes} : ${seconds}`;
         }
 
-        // Atualiza a cada 1 segundo
         setInterval(updateCounters, 1000);
         updateCounters();
 
-        // --- CÓDIGO DO CARROSSEL DE FOTOS ---
+        // Controle do Carrossel
         let currentSlide = 0;
         const track = document.getElementById('carouselTrack');
         const slides = document.querySelectorAll('.carousel-slide');
