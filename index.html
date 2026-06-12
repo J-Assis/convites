@@ -1,23 +1,26 @@
+Para criar uma página parecida com a do vídeo para o seu presente de Dia dos Namorados, preparei uma estrutura completa em um único arquivo. Desse jeito fica muito mais fácil de salvar e testar!
 
+O código já inclui um contador de tempo automático (que calcula os meses, dias, horas, minutos e segundos), uma galeria de fotos em carrossel e uma linha do tempo (timeline) para contar a história de vocês.
 
+### Como usar o código:
+
+1. Abra um editor de texto (como o Bloco de Notas ou VS Code).
+2. Cole o código abaixo e salve o arquivo com o nome `index.html`.
+3. Coloque as fotos de vocês na **mesma pasta** onde salvou o arquivo `index.html`.
+4. No código, procure por termos como `foto1.jpg`, `foto2.jpg`, etc., e mude para os nomes reais dos seus arquivos de imagem.
+
+---
+
+```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convite Especial</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Para o amor da minha vida!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --rose-gold: #b76e79;
-            --gold: #d4af37;
-            --light-pink: #fff0f5;
-            --white: #ffffff;
-            --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%);
-        }
-
+        /* --- ESTILOS GERAIS (CSS) --- */
         * {
             margin: 0;
             padding: 0;
@@ -25,315 +28,420 @@
         }
 
         body {
-            font-family: 'Cinzel', serif;
-            background: var(--bg-gradient);
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            background-color: #1a0813;
+            color: #ffe6f2;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, #2e0f22 0%, #1a0813 100%);
         }
 
-        /* Partículas de fundo simuladas */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.3;
+        /* Efeito de corações flutuando no fundo */
+        body::before {
+            content: "♥";
+            position: fixed;
+            top: -10%;
+            left: 10%;
+            font-size: 24px;
+            color: rgba(255, 105, 180, 0.15);
             animation: float 15s infinite linear;
+            z-index: -1;
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); }
-            100% { transform: translateY(-10vh) translateX(50px); }
+            0% { transform: translateY(110vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
         }
 
-        /* Container Principal */
-        .container {
+        header {
             text-align: center;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
+            padding: 80px 20px 40px 20px;
+        }
+
+        .heart-icon {
+            font-size: 50px;
+            color: #ff4d94;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .sub-date {
+            font-size: 0.9rem;
+            color: #ff99cc;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* --- CONTADOR --- */
+        .counter-container {
             max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
             padding: 20px;
         }
 
-        /* Balão */
-        .balloon-container {
-            position: relative;
-            width: 100px;
-            height: 120px;
-            margin-bottom: 50px;
-            transform: scale(0.1);
-            opacity: 0;
-            transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s;
-        }
-
-        .balloon {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, #ffccd5, var(--rose-gold));
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2);
-            position: relative;
+        .main-units {
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            gap: 40px;
+            margin-bottom: 30px;
         }
 
-        .balloon::after {
+        .unit {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 105, 180, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 120px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .unit-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ff66a3;
+        }
+
+        .unit-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffb3d9;
+        }
+
+        .time-ticker {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .total-days {
+            font-size: 1.1rem;
+            color: #ff99cc;
+        }
+
+        /* --- TEXTO ROMÂNTICO --- */
+        .love-letter {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            text-align: center;
+            border-left: 3px solid #ff4d94;
+            border-right: 3px solid #ff4d94;
+        }
+
+        .love-letter p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* --- CARROSSEL DE FOTOS --- */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 80px 0 10px 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ffb3d9;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .carousel-container {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 15px 10px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 5px;
+        }
+
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        /* --- LINHA DO TEMPO (TIMELINE) --- */
+        .timeline {
+            max-width: 800px;
+            margin: 60px auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .timeline::before {
             content: '';
             position: absolute;
-            bottom: -10px;
+            top: 0;
+            bottom: 0;
             left: 50%;
+            width: 2px;
+            background: rgba(255, 105, 180, 0.3);
             transform: translateX(-50%);
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 15px solid var(--rose-gold);
         }
 
-        .balloon-img {
-            width: 70%;
-            height: 70%;
-            object-fit: cover;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 2s ease-in 1s;
-        }
-
-        /* Texto Animado */
-        .invite-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            color: var(--rose-gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        .timeline-item {
             margin-bottom: 40px;
-            opacity: 0;
-            transform: scale(0.1) rotate(-45deg);
-            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.1) rotate(-45deg);
-            white-space: nowrap;
-        }
-
-        .invite-text.show {
-            opacity: 1;
-            top: 20%;
-            transform: translate(-50%, -50%) scale(1) rotate(0deg);
-        }
-
-        /* Botões */
-        .buttons-wrapper {
-            display: flex;
-            gap: 20px;
-            opacity: 0;
-            transition: opacity 1s ease-in 2.5s;
-            margin-top: 200px;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            min-width: 120px;
-        }
-
-        .btn-sim {
-            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
-            color: white;
-        }
-
-        .btn-sim:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
-        }
-
-        .btn-nao {
-            background: var(--white);
-            color: var(--rose-gold);
-            border: 2px solid var(--rose-gold);
             position: relative;
+            width: 50%;
         }
 
-        /* Confetes/Corações */
-        .confetti {
+        .timeline-item.left { left: 0; padding-right: 40px; text-align: right; }
+        .timeline-item.right { left: 50%; padding-left: 40px; text-align: left; }
+
+        .timeline-item::after {
+            content: '♥';
             position: absolute;
-            width: 15px;
-            height: 15px;
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        /* Mensagem de Sucesso */
-        #success-msg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            z-index: 200;
+            top: 15px;
+            right: -10px;
+            background: #1a0813;
+            color: #ff4d94;
+            width: 20px;
+            height: 20px;
             text-align: center;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid var(--gold);
+            line-height: 20px;
+            z-index: 1;
+        }
+        .timeline-item.right::after { left: -10px; }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.1);
         }
 
-        #success-msg.show {
-            transform: translate(-50%, -50%) scale(1);
+        .timeline-date {
+            font-size: 0.8rem;
+            color: #ff66a3;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        #success-msg h2 {
-            font-family: 'Great Vibes', cursive;
-            color: var(--rose-gold);
-            font-size: 2.5rem;
+        .timeline-content h3 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
+            color: #ffffff;
         }
 
-        @media (max-width: 600px) {
-            .invite-text { font-size: 2rem; }
-            .btn { padding: 12px 30px; font-size: 1rem; }
+        .timeline-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 40px !important; text-align: left !important; }
+            .timeline-item::after { left: 10px !important; }
+            .main-units { gap: 15px; }
+            .unit { min-width: 80px; padding: 10px; }
+            .unit-number { font-size: 2.5rem; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="particles" id="particles"></div>
+    <header>
+        <div class="heart-icon">♥</div>
+        <h1>Para o amor da minha vida!</h1>
+        <div class="sub-date">Juntos desde 20 de novembro de 2025</div>
+    </header>
 
-    <div class="container">
-        <div class="balloon-container" id="balloonContainer">
-            <div class="balloon">
-                <img src="" alt="Foto" class="balloon-img" id="balloonImg">
+    <main>
+        <section class="counter-container">
+            <div class="main-units">
+                <div class="unit">
+                    <div class="unit-number" id="months-slot">0</div>
+                    <div class="unit-label">Meses</div>
+                </div>
+                <div class="unit">
+                    <div class="unit-number" id="days-slot">0</div>
+                    <div class="unit-label">Dias</div>
+                </div>
             </div>
-        </div>
 
-        <h1 class="invite-text" id="inviteText">Quer ser meu madrinho?</h1>
+            <div class="time-ticker" id="clock-slot">00:00:00</div>
 
-        <div class="buttons-wrapper" id="buttonsWrapper">
-            <button class="btn btn-sim" id="btnSim">Sim</button>
-            <button class="btn btn-nao" id="btnNao">Não</button>
-        </div>
-    </div>
+            <div class="total-days">
+                <span>✨ São <strong id="total-days-slot">0</strong> dias de amor ✨</span>
+            </div>
+        </section>
 
-    <div id="success-msg">
-        <h2>Uhuuul!</h2>
-        <p>Ficamos muito felizes em ter você conosco!</p>
-        <button class="btn btn-sim" style="margin-top: 20px;" onclick="document.getElementById('success-msg').classList.remove('show')">Fechar</button>
-    </div>
+        <section class="love-letter">
+            <p>
+                "Desde o primeiro dia em que te vi, soube que minha vida jamais seria a mesma. 
+                Cada momento ao seu lado é uma bênção, cada sorriso seu ilumina meu mundo. 
+                Você é meu porto seguro, minha paz e minha maior aventura. Te amo Emanuel, 
+                mais do que as palavras podem expressar." <br>— Com todo amor, Julya.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Nossos Momentos</h2>
+            <p class="section-subtitle">Memórias que guardamos no coração</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <img src="foto1.jpg" alt="Momento 1" class="carousel-slide">
+                    <img src="foto2.jpg" alt="Momento 2" class="carousel-slide">
+                    <img src="foto3.jpg" alt="Momento 3" class="carousel-slide">
+                    <img src="foto4.jpg" alt="Momento 4" class="carousel-slide">
+                </div>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Nossa História</h2>
+            <p class="section-subtitle">Momentos que marcaram nossa jornada</p>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">20 DE NOVEMBRO DE 2025</div>
+                        <h3>O Começo de Tudo</h3>
+                        <p>O dia em que decidimos dar o passo mais bonito das nossas vidas.</p>
+                        <img src="historia1.jpg" alt="Início" class="timeline-img">
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">DEZEMBRO DE 2025</div>
+                        <h3>Primeiro Natal Juntos</h3>
+                        <p>Celebrando e criando memórias inesquecíveis bem colados.</p>
+                        <img src="historia2.jpg" alt="Natal" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Feito com amor por Julya para Emanuel ♥ 2026</p>
+    </footer>
 
     <script>
-        // CONFIGURAÇÃO: Altere a URL da imagem abaixo
-        const CONFIG = {
-            imagemBalao: "https://images.unsplash.com/photo-1518893063132-36e46dbe2428?auto=format&fit=crop&w=300&q=80"
-        };
+        // --- CÓDIGO DO CONTADOR AUTOMÁTICO ---
+        // Data de início: 20 de Novembro de 2025 às 00:00:00
+        const startDate = new Date(2025, 10, 20, 0, 0, 0); 
 
-        window.onload = function() {
-            const balloonContainer = document.getElementById('balloonContainer');
-            const balloonImg = document.getElementById('balloonImg');
-            const inviteText = document.getElementById('inviteText');
-            const buttonsWrapper = document.getElementById('buttonsWrapper');
-            const btnSim = document.getElementById('btnSim');
-            const btnNao = document.getElementById('btnNao');
-            const particlesContainer = document.getElementById('particles');
+        function updateCounters() {
+            const now = new Date();
+            const diffTime = now - startDate;
 
-            // 1. Inicializar imagem
-            balloonImg.src = CONFIG.imagemBalao;
+            // Cálculo total de dias brutos
+            const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('total-days-slot').innerText = totalDays;
 
-            // 2. Criar partículas de fundo
-            for (let i = 0; i < 20; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                p.style.width = Math.random() * 10 + 5 + 'px';
-                p.style.height = p.style.width;
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDelay = Math.random() * 15 + 's';
-                p.style.animationDuration = Math.random() * 10 + 10 + 's';
-                particlesContainer.appendChild(p);
+            // Lógica precisa para quebra de Meses e Dias restantes
+            let months = (now.getFullYear() - startDate.getFullYear()) * 12;
+            months += now.getMonth() - startDate.getMonth();
+            
+            let days = now.getDate() - startDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                // Pega o último dia do mês anterior para compensar
+                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += previousMonth.getDate();
             }
 
-            // 3. Iniciar Animação do Balão
-            setTimeout(() => {
-                balloonContainer.style.opacity = "1";
-                balloonContainer.style.transform = "scale(3)";
-                balloonImg.style.opacity = "1";
-            }, 500);
+            document.getElementById('months-slot').innerText = months;
+            document.getElementById('days-slot').innerText = days;
 
-            // 4. Iniciar Texto Animado após o balão
-            setTimeout(() => {
-                inviteText.classList.add('show');
-                buttonsWrapper.style.opacity = "1";
-            }, 3000);
+            // Horário dinâmico em formato de relógio eletrônico (HH:MM:SS)
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('clock-slot').innerText = `${hours} : ${minutes} : ${seconds}`;
+        }
 
-            // 5. Lógica do Botão "Não" (Fugir)
-            const moveNao = () => {
-                const x = Math.random() * (window.innerWidth - btnNao.offsetWidth - 40) + 20;
-                const y = Math.random() * (window.innerHeight - btnNao.offsetHeight - 40) + 20;
-                btnNao.style.position = 'fixed';
-                btnNao.style.left = x + 'px';
-                btnNao.style.top = y + 'px';
-            };
+        // Executa o relógio a cada 1 segundo
+        setInterval(updateCounters, 1000);
+        updateCounters();
 
-            btnNao.addEventListener('mouseover', moveNao);
-            btnNao.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                moveNao();
-            });
+        // --- CÓDIGO DO CARROSSEL DE FOTOS ---
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
 
-            // 6. Lógica do Botão "Sim" (Confetes)
-            btnSim.addEventListener('click', () => {
-                createConfetti();
-                document.getElementById('success-msg').classList.add('show');
-            });
+        function moveSlide(direction) {
+            currentSlide += direction;
 
-            function createConfetti() {
-                const colors = ['#b76e79', '#d4af37', '#ffccd5', '#ffffff'];
-                for (let i = 0; i < 100; i++) {
-                    const c = document.createElement('div');
-                    c.className = 'confetti';
-                    c.style.left = Math.random() * 100 + 'vw';
-                    c.style.top = '-20px';
-                    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    c.style.transform = `rotate(${Math.random() * 360}deg)`;
-                    
-                    const animation = c.animate([
-                        { transform: `translate3d(0,0,0) rotate(0deg)`, opacity: 1 },
-                        { transform: `translate3d(${(Math.random() - 0.5) * 200}px, 100vh, 0) rotate(${Math.random() * 1000}deg)`, opacity: 0 }
-                    ], {
-                        duration: Math.random() * 3000 + 2000,
-                        easing: 'cubic-bezier(0, .9, .57, 1)',
-                        delay: Math.random() * 200
-                    });
-
-                    document.body.appendChild(c);
-                    animation.onfinish = () => c.remove();
-                }
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
             }
-        };
+
+            const amountToMove = -100 * currentSlide;
+            track.style.transform = `translateX(${amountToMove}%)`;
+        }
     </script>
 </body>
 </html>
 
+```
