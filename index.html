@@ -3,235 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuel e Julya - Nosso Amor Eterno</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Para o amor da minha vida!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS GERAIS --- */
+        /* --- ESTILOS GERAIS (CSS) --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Dancing Script', cursive;
         }
 
         body {
-            background-color: #0b0208;
-            color: #fff0f5;
+            background-color: #1a0813;
+            color: #ffe6f2;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 30%, #4a0e35 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, #290725 0%, #0b0208 60%);
-            background-attachment: fixed;
-            position: relative;
+            background-image: radial-gradient(circle at 50% 50%, #2e0f22 0%, #1a0813 100%);
         }
 
-        /* --- ANIMAÇÃO DE CORAÇÕES CAINDO --- */
-        .heart-fall {
-            position: fixed;
-            top: -10%;
-            color: rgba(255, 77, 148, 0.4);
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
-            z-index: 1;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                top: -10%;
-                transform: translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                top: 110%;
-                transform: translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* --- TOPO --- */
         header {
             text-align: center;
-            padding: 80px 20px 30px 20px;
-            position: relative;
-            z-index: 2;
+            padding: 80px 20px 40px 20px;
         }
 
         .heart-icon {
-            font-size: 70px;
+            font-size: 50px;
             color: #ff4d94;
-            display: inline-block;
-            text-shadow: 0 0 25px rgba(255, 77, 148, 0.8);
-            animation: pulse 1.4s infinite ease-in-out;
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
-            50% { transform: scale(1.2); filter: drop-shadow(0 0 20px #ff4d94); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
         }
 
         h1 {
-            font-size: 4.5rem;
-            margin-top: 10px;
-            background: linear-gradient(45deg, #ffffff, #ff99cc, #ff4d94);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-top: 20px;
+            color: #ffffff;
         }
 
         .sub-date {
-            font-size: 1.6rem;
-            color: #ffb3d9;
-            margin-top: 15px;
-            word-spacing: 2px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        main {
-            position: relative;
-            z-index: 2;
+            font-size: 1rem;
+            color: #ff99cc;
+            opacity: 0.9;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         /* --- CONTADOR --- */
         .counter-container {
-            max-width: 650px;
-            margin: 20px auto;
+            max-width: 600px;
+            margin: 40px auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .main-units {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-bottom: 25px;
+            gap: 40px;
+            margin-bottom: 30px;
         }
 
         .unit {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 2px solid rgba(255, 77, 148, 0.2);
-            border-radius: 24px;
+            border: 1px solid rgba(255, 105, 180, 0.1);
+            border-radius: 15px;
             padding: 20px;
-            flex: 1;
-            max-width: 160px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 77, 148, 0.1);
-            transition: all 0.4s ease;
-        }
-
-        .unit:hover {
-            transform: translateY(-8px) scale(1.05);
-            border-color: rgba(255, 77, 148, 0.6);
-            box-shadow: 0 20px 40px rgba(255, 77, 148, 0.2);
+            min-width: 120px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         .unit-number {
+            font-family: 'Playfair Display', serif;
             font-size: 4rem;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1;
-            margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            color: #ff66a3;
         }
 
         .unit-label {
-            font-size: 1.4rem;
-            color: #ff99cc;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffb3d9;
         }
 
         .time-ticker {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 5px;
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.05);
             display: inline-block;
-            padding: 10px 40px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            border: 2px solid rgba(255, 77, 148, 0.15);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-shadow: 0 0 10px rgba(255,255,255,0.4);
+            padding: 10px 30px;
+            border-radius: 30px;
+            margin-bottom: 20px;
         }
 
         .total-days {
-            font-size: 1.8rem;
-            color: #ffb3d9;
-        }
-        
-        .total-days strong {
-            color: #ffffff;
-            font-size: 2.2rem;
-            margin: 0 6px;
-            text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
+            font-size: 1.2rem;
+            color: #ff99cc;
         }
 
         /* --- TEXTO ROMÂNTICO --- */
         .love-letter {
-            max-width: 650px;
+            max-width: 700px;
             margin: 60px auto;
-            padding: 40px 30px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
             text-align: center;
-            border: 2px solid rgba(255, 77, 148, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-left: 3px solid #ff4d94;
+            border-right: 3px solid #ff4d94;
         }
 
         .love-letter p {
-            font-size: 1.7rem;
-            line-height: 1.7;
-            color: #ffe6f2;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
         }
 
         /* --- CARROSSEL DE FOTOS --- */
         .section-title {
             text-align: center;
-            font-size: 3.8rem;
-            margin: 80px 0 5px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 80px 0 10px 0;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 77, 148, 0.3);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.4rem;
-            color: #ff99cc;
-            margin-bottom: 40px;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            color: #ffb3d9;
+            margin-bottom: 30px;
+            opacity: 0.7;
         }
 
         .carousel-container {
-            max-width: 450px;
-            aspect-ratio: 4 / 5;
+            max-width: 500px;
             margin: 0 auto;
             position: relative;
-            border-radius: 30px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-            border: 2px solid rgba(255, 77, 148, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
         .carousel-track {
             display: flex;
-            height: 100%;
-            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel-slide {
             min-width: 100%;
-            height: 100%;
+            height: 450px;
             object-fit: cover;
         }
 
@@ -239,22 +167,290 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(11, 2, 8, 0.6);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0,0,0,0.6);
+            border: none;
             color: white;
             font-size: 24px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 15px 12px;
             cursor: pointer;
             z-index: 10;
-            border-radius: 50%;
-            transition: all 0.3s;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
 
         .carousel-btn:hover {
-            background: #ff4d94
+            background: rgba(255, 77, 148, 0.8);
+        }
+
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        /* --- LINHA DO TEMPO (TIMELINE) --- */
+        .timeline {
+            max-width: 800px;
+            margin: 60px auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: rgba(255, 105, 180, 0.3);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item.left { left: 0; padding-right: 40px; text-align: right; }
+        .timeline-item.right { left: 50%; padding-left: 40px; text-align: left; }
+
+        .timeline-item::after {
+            content: '♥';
+            position: absolute;
+            top: 15px;
+            right: -10px;
+            background: #1a0813;
+            color: #ff4d94;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            z-index: 1;
+        }
+        .timeline-item.right::after { left: -10px; }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.1);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: #ff66a3;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .timeline-img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 40px !important; text-align: left !important; }
+            .timeline-item::after { left: 10px !important; }
+            .main-units { gap: 15px; }
+            .unit { min-width: 90px; padding: 12px; }
+            .unit-number { font-size: 2.8rem; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="heart-icon">♥</div>
+        <h1>Para o amor da minha vida!</h1>
+        <div class="sub-date">Juntos desde 9 de abril de 2024 • Noivos desde 7 de abril de 2026</div>
+    </header>
+
+    <main>
+        <section class="counter-container">
+            <div class="main-units">
+                <div class="unit">
+                    <div class="unit-number" id="months-slot">0</div>
+                    <div class="unit-label">Meses</div>
+                </div>
+                <div class="unit">
+                    <div class="unit-number" id="days-slot">0</div>
+                    <div class="unit-label">Dias</div>
+                </div>
+            </div>
+
+            <div class="time-ticker" id="clock-slot">00:00:00</div>
+
+            <div class="total-days">
+                <span> São <strong id="total-days-slot">0</strong> dias de muito amor </span>
+            </div>
+        </section>
+
+        <section class="love-letter">
+            <p>
+Meu Emanuel,
+
+Há uma estranheza neste dia que não consigo deixar passar sem registro. É o último dia dos namorados que teremos — e digo "teremos" já no passado, pois quando você ler isto, já será noite, e o dia já será uma lembrança. Daqui em diante, seremos outra coisa. Algo mais antigo e mais sério do que namorados; algo que as palavras ainda não aprenderam a dizer com leveza.
+
+Não vim falar de amor como quem recita. Vim observar — que é o que faço quando a emoção me pesa demais para simplesmente sentir. Vim olhar para você como se fosse a primeira vez, e confessar o que encontrei.
+
+Encontrei um homem que, ao contrário do que os poetas prometem, não me tirou o chão — mas me ajudou, discretamente, a encontrá-lo. Há uma generosidade nisso que eu demorei a entender. O amor ruidoso, aquele que transtorna e ofusca, é fácil de nomear. O seu é o outro tipo: o que fica quando o entusiasmo dos primeiros dias arrefece e o que resta ainda é suficiente. Ainda é tudo.
+"Dizia um filósofo que conhecemos a verdade de um amor não no seu florescimento, mas na sua persistência. Se for assim — e suspeito que seja — então o nosso é verdadeiro."
+
+Não quero idealizá-lo, Emanuel. Isso seria uma injustiça. A você, que é real e imperfeito como só as coisas reais podem ser; e a mim, que aprendi a amar não a imagem que fiz de alguém, mas o alguém que existe de fato, com suas hesitações, seus silêncios, seus dias em que não há nada de extraordinário — e que mesmo assim preenchem uma necessidade que eu não sabia que tinha.
+
+Há uma frase que Machado pôs na boca de um personagem cansado do mundo: "o que a paixão não via, o tempo revelou." Tomo-a emprestada — não para dizer que a paixão acabou, mas para dizer que o tempo a confirmou. O que sinto por você não é menos do que era; é mais denso. Tem peso de coisa real.
+
+Amanhã diremos sim diante de testemunhas. Mas o sim verdadeiro — esse já foi dito há muito tempo, em algum momento comum que nenhum dos dois marcou no calendário. Foi numa conversa sem importância, ou no silêncio depois de uma discussão que preferimos esquecer, ou na hora em que percebi que já não imaginava o futuro sem a sua presença estranha e necessária dentro dele.
+
+Não sei o que nos espera. Seria desonesto fingir que sei. Mas sei que prefiro não saber contigo do que saber sozinha.
+
+Com amor — que é uma palavra pequena para o que pretendo,
+
+A sua, inteiramente <br>— Com todo amor, sua Julya.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Nossos Momentos</h2>
+            <p class="section-subtitle">Memórias que guardamos no coração</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <img src="mo1.jpg" alt="Nosso Momento 1" class="carousel-slide">
+                    <img src="mo2.jpg" alt="Nosso Momento 2" class="carousel-slide">
+                    <img src="mo3.jpg" alt="Nosso Momento 3" class="carousel-slide">
+                    <img src="mo4.jpg" alt="Nosso Momento 4" class="carousel-slide">
+                </div>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+<section class="music-player">
+    <h2 class="section-title">Nossa Música</h2>
+    <p class="section-subtitle">A canção que embala nossa história</p>
+
+    <div class="music-box">
+        <div class="music-cover">
+            
+        </div>
+
+        <div class="music-info">
+            <h3>Samba Paixão</h3>
+            <p>Nossa música</p>
+        </div>
+
+        <audio controls loop id="loveSong">
+            <source src="musica.mp3" type="audio/mpeg">
+           
+        </audio>
+    </div>
+</section>
+        <section>
+            <h2 class="section-title">Nossa História</h2>
+            <p class="section-subtitle">Momentos marcantes da nossa jornada</p>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">9 DE ABRIL DE 2024</div>
+                        <h3>O Começo de Tudo</h3>
+                        <p>O dia em que nossa história de amor começou oficialmente e nossas vidas se uniram.</p>
+                        <img src="foto_inicio.jpg" alt="Início do Namoro" class="timeline-img">
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">7 DE ABRIL DE 2026</div>
+                        <h3>O "Sim" Mais Importante</h3>
+                        <p>O dia em que decidimos dar o passo mais lindo em direção ao nosso futuro. Agora, noivos!</p>
+                        <img src="foto_pedido.jpg" alt="Pedido de Casamento" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Feito com amor por Julya para Emanuel ♥ 2026</p>
+    </footer>
+
+    <script>
+        // --- CÓDIGO DO CONTADOR AUTOMÁTICO ---
+        // Data de início ajustada: 9 de Abril de 2024 (Mês 3 no JS porque começa em 0)
+        const startDate = new Date(2024, 3, 9, 0, 0, 0); 
+
+        function updateCounters() {
+            const now = new Date();
+            const diffTime = now - startDate;
+
+            // Cálculo total de dias brutos
+            const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('total-days-slot').innerText = totalDays;
+
+            // Lógica precisa para meses e dias restantes
+            let months = (now.getFullYear() - startDate.getFullYear()) * 12;
+            months += now.getMonth() - startDate.getMonth();
+            
+            let days = now.getDate() - startDate.getDate();
+            
+            if (days < 0) {
+                months--;
+                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += previousMonth.getDate();
+            }
+
+            document.getElementById('months-slot').innerText = months;
+            document.getElementById('days-slot').innerText = days;
+
+            // Relógio em tempo real (HH : MM : SS)
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('clock-slot').innerText = `${hours} : ${minutes} : ${seconds}`;
+        }
+
+        // Atualiza a cada 1 segundo
+        setInterval(updateCounters, 1000);
+        updateCounters();
+
+        // --- CÓDIGO DO CARROSSEL DE FOTOS ---
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            const amountToMove = -100 * currentSlide;
+            track.style.transform = `translateX(${amountToMove}%)`;
+        }
+    </script>
+</body>
+</html>
