@@ -3,72 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuel e Julya - Nosso Amor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Emanuel e Julya - Nosso Amor Eterno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- ESTILOS GERAIS --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Dancing Script', cursive;
         }
 
         body {
             background-color: #0b0208;
             color: #fff0f5;
-            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 20% 30%, #3a0d28 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, #1f051c 0%, #0b0208 50%);
+                radial-gradient(circle at 20% 30%, #4a0e35 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #290725 0%, #0b0208 60%);
             background-attachment: fixed;
+            position: relative;
+        }
+
+        /* --- ANIMAÇÃO DE CORAÇÕES CAINDO --- */
+        .heart-fall {
+            position: fixed;
+            top: -10%;
+            color: rgba(255, 77, 148, 0.4);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* --- TOPO --- */
         header {
             text-align: center;
-            padding: 100px 20px 40px 20px;
+            padding: 80px 20px 30px 20px;
             position: relative;
+            z-index: 2;
         }
 
         .heart-icon {
-            font-size: 60px;
+            font-size: 70px;
             color: #ff4d94;
             display: inline-block;
-            text-shadow: 0 0 20px rgba(255, 77, 148, 0.6);
+            text-shadow: 0 0 25px rgba(255, 77, 148, 0.8);
             animation: pulse 1.4s infinite ease-in-out;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
-            50% { transform: scale(1.18); filter: drop-shadow(0 0 15px #ff4d94); }
+            50% { transform: scale(1.2); filter: drop-shadow(0 0 20px #ff4d94); }
             100% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d94); }
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin-top: 15px;
-            color: #ffffff;
-            background: linear-gradient(45deg, #ffffff, #ffb3d9);
+            font-size: 4.5rem;
+            margin-top: 10px;
+            background: linear-gradient(45deg, #ffffff, #ff99cc, #ff4d94);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         .sub-date {
-            font-size: 0.95rem;
+            font-size: 1.6rem;
             color: #ffb3d9;
-            opacity: 0.9;
             margin-top: 15px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 500;
+            word-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
         }
 
         /* --- CONTADOR --- */
         .counter-container {
             max-width: 650px;
-            margin: 30px auto;
+            margin: 20px auto;
             text-align: center;
             padding: 0 20px;
         }
@@ -82,107 +117,99 @@
 
         .unit {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 77, 148, 0.2);
             border-radius: 24px;
-            padding: 25px;
+            padding: 20px;
             flex: 1;
             max-width: 160px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 77, 148, 0.1);
+            transition: all 0.4s ease;
         }
 
         .unit:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 105, 180, 0.3);
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(255, 77, 148, 0.6);
+            box-shadow: 0 20px 40px rgba(255, 77, 148, 0.2);
         }
 
         .unit-number {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 600;
+            font-size: 4rem;
+            font-weight: 700;
             color: #ffffff;
             line-height: 1;
             margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         .unit-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.4rem;
             color: #ff99cc;
-            font-weight: 500;
         }
 
         .time-ticker {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 4px;
+            font-size: 2.5rem;
             color: #ffffff;
             background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: inline-block;
-            padding: 12px 35px;
+            padding: 10px 40px;
             border-radius: 50px;
             margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 77, 148, 0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-shadow: 0 0 10px rgba(255,255,255,0.4);
         }
 
         .total-days {
-            font-size: 1.1rem;
+            font-size: 1.8rem;
             color: #ffb3d9;
-            font-weight: 400;
         }
         
         .total-days strong {
             color: #ffffff;
-            font-size: 1.3rem;
-            margin: 0 4px;
+            font-size: 2.2rem;
+            margin: 0 6px;
+            text-shadow: 0 0 10px rgba(255, 77, 148, 0.5);
         }
 
         /* --- TEXTO ROMÂNTICO --- */
         .love-letter {
             max-width: 650px;
-            margin: 80px auto;
+            margin: 60px auto;
             padding: 40px 30px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 105, 180, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            position: relative;
+            border: 2px solid rgba(255, 77, 148, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .love-letter p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            font-style: italic;
+            font-size: 1.7rem;
+            line-height: 1.7;
             color: #ffe6f2;
         }
 
         /* --- CARROSSEL DE FOTOS --- */
         .section-title {
             text-align: center;
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            margin: 100px 0 5px 0;
+            font-size: 3.8rem;
+            margin: 80px 0 5px 0;
             color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 77, 148, 0.3);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 1.4rem;
             color: #ff99cc;
             margin-bottom: 40px;
-            opacity: 0.8;
-            letter-spacing: 1px;
+            opacity: 0.9;
         }
 
         .carousel-container {
@@ -192,14 +219,14 @@
             position: relative;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            border: 2px solid rgba(255, 77, 148, 0.3);
         }
 
         .carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .carousel-slide {
@@ -212,14 +239,14 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(11, 2, 8, 0.5);
+            background: rgba(11, 2, 8, 0.6);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
-            font-size: 18px;
-            width: 45px;
-            height: 45px;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -230,267 +257,4 @@
         }
 
         .carousel-btn:hover {
-            background: #ff4d94;
-            border-color: #ff4d94;
-            box-shadow: 0 0 15px #ff4d94;
-        }
-
-        .carousel-btn.prev { left: 15px; }
-        .carousel-btn.next { right: 15px; }
-
-        /* --- LINHA DO TEMPO (TIMELINE) --- */
-        .timeline {
-            max-width: 750px;
-            margin: 60px auto;
-            position: relative;
-            padding: 20px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: linear-gradient(to bottom, #ff4d94, rgba(255, 105, 180, 0.1));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 60px;
-            position: relative;
-            width: 50%;
-        }
-
-        .timeline-item.left { left: 0; padding-right: 40px; text-align: right; }
-        .timeline-item.right { left: 50%; padding-left: 40px; text-align: left; }
-
-        .timeline-item::after {
-            content: '♥';
-            position: absolute;
-            top: 18px;
-            right: -11px;
-            background: #0b0208;
-            color: #ff4d94;
-            width: 22px;
-            height: 22px;
-            text-align: center;
-            line-height: 22px;
-            font-size: 0.8rem;
-            z-index: 2;
-            border: 1px solid rgba(255, 105, 180, 0.4);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 77, 148, 0.4);
-        }
-        .timeline-item.right::after { left: -11px; }
-
-        .timeline-content {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            transition: border-color 0.3s;
-        }
-
-        .timeline-content:hover {
-            border-color: rgba(255, 77, 148, 0.3);
-        }
-
-        .timeline-date {
-            font-size: 0.8rem;
-            color: #ff4d94;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 1.5px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .timeline-content p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #ddccdd;
-        }
-
-        .timeline-img {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            object-fit: cover;
-            border-radius: 14px;
-            margin-top: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 80px 20px;
-            font-size: 0.85rem;
-            opacity: 0.6;
-            letter-spacing: 1px;
-        }
-
-        /* --- RESPONSIVIDADE EXTREMA --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; left: 0 !important; padding-left: 35px !important; padding-right: 0 !important; text-align: left !important; margin-bottom: 40px; }
-            .timeline-item::after { left: 9px !important; top: 18px; }
-            .main-units { gap: 15px; }
-            .unit { padding: 15px; border-radius: 18px; }
-            .unit-number { font-size: 2.5rem; }
-            .time-ticker { font-size: 1.5rem; padding: 8px 25px; }
-            .carousel-container { max-width: 88%; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="heart-icon">♥</div>
-        <h1>Emanuel & Julya</h1>
-        <div class="sub-date">Juntos desde 9 de abril de 2024 • Noivos desde 7 de abril de 2026</div>
-    </header>
-
-    <main>
-        <section class="counter-container">
-            <div class="main-units">
-                <div class="unit">
-                    <div class="unit-number" id="months-slot">0</div>
-                    <div class="unit-label">Meses</div>
-                </div>
-                <div class="unit">
-                    <div class="unit-number" id="days-slot">0</div>
-                    <div class="unit-label">Dias</div>
-                </div>
-            </div>
-
-            <div class="time-ticker" id="clock-slot">00 : 00 : 00</div>
-
-            <div class="total-days">
-                <span>✨ São <strong id="total-days-slot">0</strong> dias de muito amor ✨</span>
-            </div>
-        </section>
-
-        <section class="love-letter">
-            <p>
-                "Desde o primeiro dia em que te vi, soube que minha vida jamais seria a mesma. 
-                Cada momento ao seu lado é uma bênção, cada sorriso seu ilumina meu mundo. 
-                Você é meu porto seguro, minha paz e minha maior aventura. Te amo Emanuel, 
-                mais do que as palavras podem expressar. Mal posso esperar pelo nosso 'para sempre'." <br>— Com todo amor, Julya.
-            </p>
-        </section>
-
-        <section>
-            <h2 class="section-title">Nossos Momentos</h2>
-            <p class="section-subtitle">Memórias que guardamos para sempre</p>
-            
-            <div class="carousel-container">
-                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-                <div class="carousel-track" id="carouselTrack">
-                    <img src="foto1.jpg" alt="Nosso Momento 1" class="carousel-slide">
-                    <img src="foto2.jpg" alt="Nosso Momento 2" class="carousel-slide">
-                    <img src="foto3.jpg" alt="Nosso Momento 3" class="carousel-slide">
-                    <img src="foto4.jpg" alt="Nosso Momento 4" class="carousel-slide">
-                </div>
-                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">Nossa História</h2>
-            <p class="section-subtitle">Os passos mais importantes que já demos</p>
-
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">9 DE ABRIL DE 2024</div>
-                        <h3>O Começo de Tudo</h3>
-                        <p>O dia em que nossa história de amor começou oficialmente e nossas vidas se cruzaram para nunca mais se separar.</p>
-                        <img src="foto_inicio.jpg" alt="Início do Namoro" class="timeline-img">
-                    </div>
-                </div>
-
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">7 DE ABRIL DE 2026</div>
-                        <h3>O "Sim" Mais Importante</h3>
-                        <p>O dia em que decidimos dar o passo mais lindo em direção ao nosso futuro. O início oficial do nosso noivado!</p>
-                        <img src="foto_pedido.jpg" alt="Pedido de Casamento" class="timeline-img">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Feito com amor por Julya para Emanuel ♥ 2026</p>
-    </footer>
-
-    <script>
-        // Configuração da data inicial: 9 de Abril de 2024 (Mês 3 no JS)
-        const startDate = new Date(2024, 3, 9, 0, 0, 0); 
-
-        function updateCounters() {
-            const now = new Date();
-            const diffTime = now - startDate;
-
-            // Dias Brutos Totais
-            const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            document.getElementById('total-days-slot').innerText = totalDays;
-
-            // Divisão exata de Meses e Dias restantes
-            let months = (now.getFullYear() - startDate.getFullYear()) * 12;
-            months += now.getMonth() - startDate.getMonth();
-            
-            let days = now.getDate() - startDate.getDate();
-            
-            if (days < 0) {
-                months--;
-                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                days += previousMonth.getDate();
-            }
-
-            document.getElementById('months-slot').innerText = months;
-            document.getElementById('days-slot').innerText = days;
-
-            // Relógio digital dinâmico (HH : MM : SS)
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            
-            document.getElementById('clock-slot').innerText = `${hours} : ${minutes} : ${seconds}`;
-        }
-
-        setInterval(updateCounters, 1000);
-        updateCounters();
-
-        // Controle do Carrossel
-        let currentSlide = 0;
-        const track = document.getElementById('carouselTrack');
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function moveSlide(direction) {
-            currentSlide += direction;
-
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = slides.length - 1;
-            }
-
-            const amountToMove = -100 * currentSlide;
-            track.style.transform = `translateX(${amountToMove}%)`;
-        }
-    </script>
-</body>
-</html>
+            background: #ff4d94
