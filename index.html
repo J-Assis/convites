@@ -1,17 +1,3 @@
-Para criar uma página parecida com a do vídeo para o seu presente de Dia dos Namorados, preparei uma estrutura completa em um único arquivo. Desse jeito fica muito mais fácil de salvar e testar!
-
-O código já inclui um contador de tempo automático (que calcula os meses, dias, horas, minutos e segundos), uma galeria de fotos em carrossel e uma linha do tempo (timeline) para contar a história de vocês.
-
-### Como usar o código:
-
-1. Abra um editor de texto (como o Bloco de Notas ou VS Code).
-2. Cole o código abaixo e salve o arquivo com o nome `index.html`.
-3. Coloque as fotos de vocês na **mesma pasta** onde salvou o arquivo `index.html`.
-4. No código, procure por termos como `foto1.jpg`, `foto2.jpg`, etc., e mude para os nomes reais dos seus arquivos de imagem.
-
----
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -33,23 +19,6 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 50%, #2e0f22 0%, #1a0813 100%);
-        }
-
-        /* Efeito de corações flutuando no fundo */
-        body::before {
-            content: "♥";
-            position: fixed;
-            top: -10%;
-            left: 10%;
-            font-size: 24px;
-            color: rgba(255, 105, 180, 0.15);
-            animation: float 15s infinite linear;
-            z-index: -1;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg); }
-            100% { transform: translateY(-10vh) rotate(360deg); }
         }
 
         header {
@@ -77,10 +46,11 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
         }
 
         .sub-date {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #ff99cc;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         /* --- CONTADOR --- */
@@ -134,7 +104,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
         }
 
         .total-days {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ff99cc;
         }
 
@@ -162,6 +132,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             margin: 80px 0 10px 0;
+            color: #ffffff;
         }
 
         .section-subtitle {
@@ -196,14 +167,19 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             border: none;
             color: white;
             font-size: 24px;
-            padding: 15px 10px;
+            padding: 15px 12px;
             cursor: pointer;
             z-index: 10;
             border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 77, 148, 0.8);
         }
 
         .carousel-btn.prev { left: 10px; }
@@ -260,10 +236,11 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
         }
 
         .timeline-date {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ff66a3;
             font-weight: bold;
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
         .timeline-content h3 {
@@ -274,7 +251,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
 
         .timeline-img {
             width: 100%;
-            max-height: 200px;
+            max-height: 250px;
             object-fit: cover;
             border-radius: 8px;
             margin-top: 10px;
@@ -287,14 +264,14 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             opacity: 0.7;
         }
 
-        /* Responsividade para celulares */
+        /* Responsividade para Celulares */
         @media (max-width: 768px) {
             .timeline::before { left: 20px; }
             .timeline-item { width: 100%; left: 0 !important; padding-left: 40px !important; text-align: left !important; }
             .timeline-item::after { left: 10px !important; }
             .main-units { gap: 15px; }
-            .unit { min-width: 80px; padding: 10px; }
-            .unit-number { font-size: 2.5rem; }
+            .unit { min-width: 90px; padding: 12px; }
+            .unit-number { font-size: 2.8rem; }
             h1 { font-size: 2.2rem; }
         }
     </style>
@@ -304,7 +281,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
     <header>
         <div class="heart-icon">♥</div>
         <h1>Para o amor da minha vida!</h1>
-        <div class="sub-date">Juntos desde 20 de novembro de 2025</div>
+        <div class="sub-date">Juntos desde 9 de abril de 2024 • Noivos desde 7 de abril de 2026</div>
     </header>
 
     <main>
@@ -323,7 +300,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             <div class="time-ticker" id="clock-slot">00:00:00</div>
 
             <div class="total-days">
-                <span>✨ São <strong id="total-days-slot">0</strong> dias de amor ✨</span>
+                <span>✨ São <strong id="total-days-slot">0</strong> dias de muito amor ✨</span>
             </div>
         </section>
 
@@ -332,7 +309,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
                 "Desde o primeiro dia em que te vi, soube que minha vida jamais seria a mesma. 
                 Cada momento ao seu lado é uma bênção, cada sorriso seu ilumina meu mundo. 
                 Você é meu porto seguro, minha paz e minha maior aventura. Te amo Emanuel, 
-                mais do que as palavras podem expressar." <br>— Com todo amor, Julya.
+                mais do que as palavras podem expressar. Mal posso esperar pelo nosso 'para sempre'." <br>— Com todo amor, Julya.
             </p>
         </section>
 
@@ -343,10 +320,10 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             <div class="carousel-container">
                 <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
                 <div class="carousel-track" id="carouselTrack">
-                    <img src="foto1.jpg" alt="Momento 1" class="carousel-slide">
-                    <img src="foto2.jpg" alt="Momento 2" class="carousel-slide">
-                    <img src="foto3.jpg" alt="Momento 3" class="carousel-slide">
-                    <img src="foto4.jpg" alt="Momento 4" class="carousel-slide">
+                    <img src="foto1.jpg" alt="Nosso Momento 1" class="carousel-slide">
+                    <img src="foto2.jpg" alt="Nosso Momento 2" class="carousel-slide">
+                    <img src="foto3.jpg" alt="Nosso Momento 3" class="carousel-slide">
+                    <img src="foto4.jpg" alt="Nosso Momento 4" class="carousel-slide">
                 </div>
                 <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
@@ -354,24 +331,24 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
 
         <section>
             <h2 class="section-title">Nossa História</h2>
-            <p class="section-subtitle">Momentos que marcaram nossa jornada</p>
+            <p class="section-subtitle">Momentos marcantes da nossa jornada</p>
 
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <div class="timeline-date">20 DE NOVEMBRO DE 2025</div>
+                        <div class="timeline-date">9 DE ABRIL DE 2024</div>
                         <h3>O Começo de Tudo</h3>
-                        <p>O dia em que decidimos dar o passo mais bonito das nossas vidas.</p>
-                        <img src="historia1.jpg" alt="Início" class="timeline-img">
+                        <p>O dia em que nossa história de amor começou oficialmente e nossas vidas se uniram.</p>
+                        <img src="foto_inicio.jpg" alt="Início do Namoro" class="timeline-img">
                     </div>
                 </div>
 
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <div class="timeline-date">DEZEMBRO DE 2025</div>
-                        <h3>Primeiro Natal Juntos</h3>
-                        <p>Celebrando e criando memórias inesquecíveis bem colados.</p>
-                        <img src="historia2.jpg" alt="Natal" class="timeline-img">
+                        <div class="timeline-date">7 DE ABRIL DE 2026</div>
+                        <h3>O "Sim" Mais Importante</h3>
+                        <p>O dia em que decidimos dar o passo mais lindo em direção ao nosso futuro. Agora, noivos!</p>
+                        <img src="foto_pedido.jpg" alt="Pedido de Casamento" class="timeline-img">
                     </div>
                 </div>
             </div>
@@ -384,8 +361,8 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
 
     <script>
         // --- CÓDIGO DO CONTADOR AUTOMÁTICO ---
-        // Data de início: 20 de Novembro de 2025 às 00:00:00
-        const startDate = new Date(2025, 10, 20, 0, 0, 0); 
+        // Data de início ajustada: 9 de Abril de 2024 (Mês 3 no JS porque começa em 0)
+        const startDate = new Date(2024, 3, 9, 0, 0, 0); 
 
         function updateCounters() {
             const now = new Date();
@@ -395,7 +372,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
             document.getElementById('total-days-slot').innerText = totalDays;
 
-            // Lógica precisa para quebra de Meses e Dias restantes
+            // Lógica precisa para meses e dias restantes
             let months = (now.getFullYear() - startDate.getFullYear()) * 12;
             months += now.getMonth() - startDate.getMonth();
             
@@ -403,7 +380,6 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             
             if (days < 0) {
                 months--;
-                // Pega o último dia do mês anterior para compensar
                 const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
                 days += previousMonth.getDate();
             }
@@ -411,7 +387,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             document.getElementById('months-slot').innerText = months;
             document.getElementById('days-slot').innerText = days;
 
-            // Horário dinâmico em formato de relógio eletrônico (HH:MM:SS)
+            // Relógio em tempo real (HH : MM : SS)
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
@@ -419,7 +395,7 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
             document.getElementById('clock-slot').innerText = `${hours} : ${minutes} : ${seconds}`;
         }
 
-        // Executa o relógio a cada 1 segundo
+        // Atualiza a cada 1 segundo
         setInterval(updateCounters, 1000);
         updateCounters();
 
@@ -443,5 +419,3 @@ O código já inclui um contador de tempo automático (que calcula os meses, dia
     </script>
 </body>
 </html>
-
-```
